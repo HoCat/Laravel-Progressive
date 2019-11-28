@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 //    echo phpinfo();
-//    return view('welcome');
-    $a = 'USER@asdasd.com';
-    dump(filter_var($a, FILTER_VALIDATE_EMAIL));
+    return view('welcome');
 });
 
 Route::get('/help', function () {
@@ -79,4 +77,33 @@ Route::get('/queue', function () {
 
 Route::get('/index', 'PostController@index');
 Route::post('/posts', 'PostController@store');
+
+Route::get('/redirect', function(){
+    return redirect('http://www.baidu.com');
+});
+Route::get('/header', function(){
+   return response('测试响应头')->header('X-header-One', 'Laraval学院')->header('X-header-Two','Header 头测试');
+});
+
+Route::get('/cookie', function(){
+    return response('测试COOKIE')->cookie('username', 'hycreeze');
+});
+
+Route::get('/session', function(){
+    session(['name' => 'hycreeze']);
+    session(['pass' => '123456']);
+    return response('测试session');
+});
+
+Route::post('/test/forms', function(\Illuminate\Http\Request $request){
+
+    $request->validate([
+        'title' => 'required|max:200',
+        'body' => 'required'
+    ]);
+    return response('测试表单验证');
+});
+
+
+
 
