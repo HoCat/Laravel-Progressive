@@ -95,15 +95,34 @@ Route::get('/session', function(){
     return response('测试session');
 });
 
-Route::post('/test/forms', function(\Illuminate\Http\Request $request){
+Route::prefix('test')->group(function(){
+    Route::post('/forms', function(\Illuminate\Http\Request $request){
+        $request->validate([
+            'title' => 'required|max:200',
+            'body' => 'required'
+        ]);
+        return response('测试表单验证');
+    });
+    Route::post('/photo', function(\Illuminate\Http\Request $request){
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,bmp,png,gif'
+        ]);
+        $photo = $request->file('photo');
+        $basename = $photo->getClientOriginalName();
 
-    $request->validate([
-        'title' => 'required|max:200',
-        'body' => 'required'
-    ]);
-    return response('测试表单验证');
+        return $photo->storeAs('photos', $basename);
+    });
+    Route::get('/api', function(\Illuminate\Http\Request $request){
+       return [
+           'user' => 'nick',
+           'name' => 'nicker',
+           'pass' => 123456,
+           'ceshi' => [
+               'wqewqe','21321321','12321'
+           ]
+       ];
+    });
 });
-
 
 
 

@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -99,4 +101,39 @@ class ExampleTest extends TestCase
         $response->assertSessionHasErrors(['body' => 'The body field is required.'])
             ->assertSessionDoesntHaveErrors(['content' => '这里content没有验证 所以肯定不报错']);
     }
+
+    /**
+     * 测试文件提交
+     *
+     */
+    public function testFileUpload()
+    {
+        Storage::fake('photos'); // 伪造目录
+        $photo = UploadedFile::fake()->image('img.png'); //伪造上传图片
+
+        $this->post('/test/photo', ['photo'=> $photo]);
+
+        Storage::disk('photos')->assertMissing('img.png'); // 断言文件是否上传成功
+    }
+
+    /**
+     * 对 Json 测试
+     *
+     */
+    public function testJson()
+    {
+       $response = $this->json('get', '/test/api');
+
+       $response->assertStatus(200);
+       // 断言返回 JSON 数据中是否包含给定数据
+       $response->assertJson(['user' => 'nick', 'name' => 'nicker', 'pass' => 123456]);
+       // 用于断言返回 JSON 数据中不包含给定键
+       $response->assertJsonMissing(['title'=>'does not exists']);
+       // 断言给定键值下数据项的个数 前提是该键值下必须为数组
+       $response->assertJsonCount(3, 'ceshi');
+       // 断言 JSON 数据中是否包含给定片段
+       $response->assertJsonFragment(['name' => 'nicker']);
+    }
+
+
 }
