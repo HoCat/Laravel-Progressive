@@ -8,4 +8,5 @@ interface TestUserRepositoryInterface
      * @return array
      * */
     public function all() : array;
+
 }

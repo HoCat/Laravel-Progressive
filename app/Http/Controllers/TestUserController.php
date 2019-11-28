@@ -26,6 +26,7 @@ class TestUserController extends Controller
     {
         // 通过接口直接调用 all 方法
         $data = $this->service->all();
-        return view('users', compact('data'));
+        $hao = 'ceshi';
+        return view('users', compact('data', 'hao'));
     }
 }

@@ -20,7 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+//    echo phpinfo();
+//    return view('welcome');
+    $a = 'USER@asdasd.com';
+    dump(filter_var($a, FILTER_VALIDATE_EMAIL));
 });
 
 Route::get('/help', function () {
@@ -76,3 +79,4 @@ Route::get('/queue', function () {
 
 Route::get('/index', 'PostController@index');
 Route::post('/posts', 'PostController@store');
+
