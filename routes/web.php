@@ -11,6 +11,7 @@
 |
 */
 use App\Models\User;
+use App\User as Auser;
 use App\Events\UserLoginered;
 use App\Jobs\LearnQueue;
 use App\Jobs\LearnQueueOne;
@@ -20,13 +21,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-//    echo phpinfo();
+//    echo now();
     return view('welcome');
 });
 
 Route::get('/help', function () {
     $res = User::all()->toJson();
-    echo $res;
+    factory(User::class)->create();
+//    dump( User::all()->fresh());
     dump(now()->addMinutes(5));
 });
 
@@ -125,4 +127,8 @@ Route::prefix('test')->group(function(){
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 

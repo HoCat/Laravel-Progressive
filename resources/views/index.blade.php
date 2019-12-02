@@ -25,7 +25,7 @@
         <input type="text" name="title" class="form-control" placeholder="Title">
     </div>
     <div class="form-group">
-            <textarea class="form-control" rows="5" name="body" class="form-control" placeholder="Content"></textarea>
+        <textarea class="form-control" rows="5" name="text" class="form-control" placeholder="Content"></textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-info">Submit Post</button>

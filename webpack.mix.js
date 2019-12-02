@@ -1,5 +1,8 @@
 const mix = require('laravel-mix');
 
+require('laravel-mix-tailwind');
+require('laravel-mix-purgecss');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +14,41 @@ const mix = require('laravel-mix');
  |
  */
 
+// mix.js('resources/js/app.js', 'public/js')
+//    .postCss('resources/css/app.css', 'public/css')
+//    .tailwind('./tailwind.config.js');
+
+
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .postCss('resources/css/app.css', 'public/css')
+    .options({
+        postCss: [
+            require('postcss-import')(),
+            require('tailwindcss')(),
+            require('postcss-preset-env')({
+                // Mix adds autoprefixer already, don't need to run it twice
+                features: { autoprefixer: false }
+            }),
+        ]
+    })
+    .purgeCss();
+
+// mix.js('resources/js/app.js', 'public/js')
+//     .postCss('resources/css/app.css', 'public/css')
+//     .options({
+//         postCss: [
+//             require('postcss-import')(),
+//             require('tailwindcss')(),
+//             require('postcss-cssnext')({
+//                 // Mix adds autoprefixer already, don't need to run it twice
+//                 features: { autoprefixer: false }
+//             }),
+//         ]
+//     })
+//     .purgeCss();
+
+// if (mix.inProduction()) {
+//   mix
+//    .version()
+//    .purgeCss();
+// }
