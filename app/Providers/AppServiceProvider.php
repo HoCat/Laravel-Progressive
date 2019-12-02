@@ -17,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // 注册一个接口实现
         $this->app->bind(TestUserRepositoryInterface::class, TestDbUser::class);
+        if ($this->app->environment('local','testing environment name')){
+            $this->app->register('\Laravel\Dusk\DuskServiceProvider');
+        }
     }
 
     /**

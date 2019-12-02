@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
+use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,15 +17,22 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+//    return [
+//        'username' => 'task',
+//        'nickname' => 'task',
+//        'education'=> 0,
+//        'avatar' => '2019/09/17/20190917101457715060.jpeg',
+//        'email' => $faker->unique()->safeEmail,
+//        'last_token' => '12312.123123.123-123-123',
+//        'password' => '$10$A.HHtNW/qtidz2IBLXtR9.qVzHnUtfyDU2mxS.XK96KXQjylLDvGu', // password
+//        'created_at' => now(),
+//        'updated_at' => now(),
+//    ];
     return [
-        'username' => 'task',
-        'nickname' => 'task',
-        'education'=> 0,
-        'avatar' => '2019/09/17/20190917101457715060.jpeg',
+        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'last_token' => '12312.123123.123-123-123',
-        'password' => '123456', // password
-        'created_at' => now(),
-        'updated_at' => now(),
+        'email_verified_at' => now(),
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'remember_token' => Str::random(10),
     ];
 });
