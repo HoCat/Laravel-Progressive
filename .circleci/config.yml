@@ -8,13 +8,11 @@ jobs:
             MYSQL_HOST: 127.0.0.1
             MYSQL_DB: study
             MYSQL_USER: root
-            MYSQL_ALLOW_EMPTY_PASSWORD: true
-            MYSQL_PASSWORD:
-      - image: mysql:8.0
-        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+            MYSQL_PASSWORD: 123456
+      - image: circleci/mysql:8.0
         environment:
             MYSQL_USER: root
-            MYSQL_ALLOW_EMPTY_PASSWORD: true
+            MYSQL_PASSWORD: 123456
 
     working_directory: ~/Laravel-Progressive
 
