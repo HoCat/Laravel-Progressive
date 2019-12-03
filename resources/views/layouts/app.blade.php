@@ -45,6 +45,19 @@
         </nav>
 
         @yield('content')
+
+        <div class="shadow-lg leading-normal self-end bg-gray-900 w-1/4  rounded-lg ml-20 relative">
+            <div class="md:flex  rounded-lg p-6 shadow-md" style="color: #fff">
+                <img src="https://randomuser.me/api/portraits/women/17.jpg" alt="" class="h-24 w-24  border-2 block mr-8 mt-2 rounded-full">
+                <div class="text-center md:text-left">
+                    <h2 style="font-size: 1.6rem" class="text-lg">Cool Breeze</h2>
+                    <div class="text-green-300">ZMS Cable iMarking</div>
+                    <div class="text-gray-400">hycreeze@gmail.com</div>
+                    <div class="text-gray-400">(555) 765-4321</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
