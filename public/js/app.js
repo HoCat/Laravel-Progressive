@@ -19565,7 +19565,7 @@ var render = function() {
       "h2",
       {
         staticClass:
-          "bg-yellow-dark text-sm py-2 px-4 font-hairline font-mono text-yellow-darker"
+          "shadow bg-blue-900 text-gray-100 text-sm py-2 px-4 font-hairline font-mono"
       },
       [_vm._v("Tasks")]
     ),
@@ -19657,7 +19657,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "appearance-none bg-transparent border-none w-3/4 text-yellow-darkest mr-3 py-1 px-2 font-serif italic",
+              "appearance-none bg-transparent border-none w-3/4 mr-3 py-1 px-2 font-serif italic",
             attrs: {
               type: "text",
               placeholder: "New Task",
@@ -19679,7 +19679,7 @@ var render = function() {
             "button",
             {
               staticClass:
-                "flex-no-shrink bg-yellow hover:bg-yellow font-base font-normal text-yellow-darker py-2 px-4 rounded",
+                "flex-no-shrink border border-blue-500 hover:border-transparent bg-transparent hover:bg-blue-500 font-base font-semibold text-blue-700 hover:text-white py-2 px-4 rounded",
               attrs: { type: "button", dusk: "task-submit" },
               on: { click: _vm.createTask }
             },
