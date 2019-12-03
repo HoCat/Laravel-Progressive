@@ -1884,6 +1884,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['initialTasks'],
   data: function data() {
@@ -19662,7 +19663,8 @@ var render = function() {
               type: "text",
               placeholder: "New Task",
               "aria-label": "New Task",
-              dusk: "task-input"
+              dusk: "task-input",
+              name: "task-input"
             },
             domProps: { value: _vm.newTask },
             on: {

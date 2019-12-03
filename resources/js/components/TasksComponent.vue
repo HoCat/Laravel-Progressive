@@ -30,6 +30,7 @@
                        aria-label="New Task"
                        v-model="newTask"
                        dusk="task-input"
+                       name="task-input"
                 >
                 <button
                     class="flex-no-shrink border border-blue-500 hover:border-transparent bg-transparent hover:bg-blue-500 font-base font-semibold text-blue-700 hover:text-white py-2 px-4 rounded"
