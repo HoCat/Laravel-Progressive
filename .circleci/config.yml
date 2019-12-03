@@ -27,7 +27,7 @@ jobs:
           keys:
               - composer-v1-{{ checksum "composer.lock" }}
               - composer-v1-
-      - run: mv .env.testing .env
+      - run: mv env.test .env
       - run: composer install -n --ignore-platform-reqs
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
@@ -59,6 +59,7 @@ jobs:
           name: Start Chrome Driver
           command: ./vendor/laravel/dusk/bin/chromedriver-linux
           background: true
+      - run: mv env.dusk .env.dusk.local
       - run:
           name: Run Laravel Dusk Tests
           command: php artisan dusk
