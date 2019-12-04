@@ -24,7 +24,7 @@ class TaskTest extends TestCase
 
     public function testUserCreateTask()
     {
-        $user = User::find(1);
+        $user = factory(User::class)->create();
         $task = [
             'text' => 'New task text',
             'user_id'  => $user->id,
