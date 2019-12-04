@@ -9,14 +9,10 @@ jobs:
             MYSQL_DB: study
             MYSQL_USER: root
             MYSQL_PASSWORD: 123456
-      - image: circleci/mysql:8.0.4
-        environment:
+      - image: mysql:5.7
+          command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
+          environment:
             MYSQL_ROOT_PASSWORD: 123456
-            MYSQL_USER: user
-            MYSQL_ROOT_HOST: "%"
-            MYSQL_DATABASE: study
-            MYSQL_PASSWORD: 123456
-
 
     working_directory: ~/Laravel-Progressive
 
