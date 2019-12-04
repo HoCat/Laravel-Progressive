@@ -22,16 +22,16 @@ class ExampleTest extends TestCase
     /*
      * 测试邮件
      * */
-    public function testSendEmail()
-    {
-        // 断言是否是send实例
-        $this->assertInstanceOf(Send::class, Send::fromString('user@qq.com'));
-        // 当传入不正常的值时 断言是否抛出异常
-        $this->expectException(\InvalidArgumentException::class);
-        Send::fromString('ssss');
-        // 断言直接输出对象时是否于传入的参数一致
-        $this->assertEquals('user@qq.com', Send::fromString('user@qq.com'));
-    }
+//    public function testSendEmail()
+//    {
+//        // 断言是否是send实例
+//        $this->assertInstanceOf(Send::class, Send::fromString('user@qq.com'));
+//        // 当传入不正常的值时 断言是否抛出异常
+//        $this->expectException(\InvalidArgumentException::class);
+//        Send::fromString('ssss');
+//        // 断言直接输出对象时是否于传入的参数一致
+//        $this->assertEquals('user@qq.com', Send::fromString('user@qq.com'));
+//    }
 
     /*
      * 测试变量属性
