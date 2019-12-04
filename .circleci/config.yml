@@ -61,7 +61,7 @@ jobs:
       - run: npm run production
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -u root -p 123456 -e "create database study;"
+          command: mysql -h 127.0.0.1 -uroot -p123456 -e "create database study;"
       - run: php artisan key:generate
       - run: php artisan migrate
       - run: php artisan passport:install
