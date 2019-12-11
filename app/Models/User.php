@@ -12,13 +12,14 @@ class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
 
+    public $rate_limit = 5;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'username', 'nickname', 'education', 'origin', 'idcard', 'birthday', 'signature', 'speciatly', 'phone', 'email', 'qq', 'wechat', 'address', 'password', 'avatar', 'last_token', 'status', 'last_login_time', 'last_login_ip'
+        'username', 'nickname', 'education', 'origin', 'idcard', 'birthday', 'signature', 'speciatly', 'phone', 'email', 'qq', 'wechat', 'address', 'password', 'avatar', 'last_token', 'remember_token', 'status', 'last_login_time', 'last_login_ip'
     ];
 
     /**

@@ -41,7 +41,8 @@ Route::get('/event', function () {
     $learn = \App\Models\Learn::find(1);
     $learn2 = \App\Models\Learn::find(2);
     event(new \App\Events\LearnRewardered($learn));
-    event(new \App\Events\LearnRegressered($learn2));
+    return $learn;
+//    event(new \App\Events\LearnRegressered($learn2));
 //    event(new \App\Events\TestQueueered($learn));
 });
 
@@ -131,4 +132,35 @@ Route::prefix('test')->group(function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/chats', 'ChatsController@index')->name('chats');
 
+Route::get('/tenxu', 'InterviewController@example')->name('example');
+
+// 路由模型绑定 隐式绑定
+Route::get('/task/{task}', function(\App\Models\Task $task){
+    dump($task);
+});
+
+// 频率限制 该中间件接收两个参数，第一个是次数上限，第二个是指定时间段（单位：分钟）
+Route::middleware('throttle:3, 1')->group(function(){
+   Route::get('/test_time', function () {
+        return 1111;
+   });
+});
+
+// 使用模型动态设置频率限制
+Route::middleware('throttle:rate_limit, 1')->group(function(){
+    Route::get('/user', function () {
+        // 在 User 模型中设置自定义的 rate_limit 属性值
+            return 'user';
+    });
+    Route::get('/post', function () {
+        // 在 User 模型中设置自定义的 rate_limit 属性值
+        return 'user';
+    });
+});
+
+// 兜底路由 也就是TP中的Miss路由 属于最后的防线
+Route::fallback(function () {
+    return response()->view('error');
+});

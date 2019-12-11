@@ -16,4 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('task','TaskController');
+
+// Api 不需要获取页面信息 所以排除 edit create
+Route::resource('task', 'TaskController', ['except' => ['edit', 'create']]);
+

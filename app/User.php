@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $rate_limit = 6;
+
     /**
      * The attributes that should be hidden for arrays.
      *

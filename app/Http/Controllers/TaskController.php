@@ -14,7 +14,7 @@ class TaskController extends Controller
     public function __construct()
     {
         // 使用中间件过滤
-        $this->middleware('auth:api')->except(['index', 'show']);
+//        $this->middleware('auth:api')->except(['index', 'show']);
 //        $this->service = $service;
     }
 
@@ -26,6 +26,8 @@ class TaskController extends Controller
     public function index()
     {
         //
+        dump(auth('api')->user()->id);
+//        return Task::where('user_id', auth('api')->user()->id)->get();
     }
 
     /**
@@ -65,6 +67,7 @@ class TaskController extends Controller
     public function show($id)
     {
         //
+        return Task::findOrFail($id);
     }
 
     /**

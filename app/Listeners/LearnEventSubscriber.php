@@ -13,6 +13,7 @@ class LearnEventSubscriber
      * */
     public function learnReward($event)
     {
+        sleep(30);
         $event->learn->score = $event->learn->score + 10; // 奖励10分
         $event->learn->save();
     }
