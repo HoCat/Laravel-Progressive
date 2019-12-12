@@ -26,4 +26,13 @@ class HomeController extends Controller
         $tasks = auth()->user()->tasks->all();
         return view('home', ['tasks' => json_encode($tasks)]);
     }
+
+    /*
+     *  接收路由参数
+     */
+    public function req(Request $request, $id)
+    {
+        dump($request->segments());
+        dump($id);
+    }
 }

@@ -160,6 +160,18 @@ Route::middleware('throttle:rate_limit, 1')->group(function(){
     });
 });
 
+// 获取路由参数
+Route::get('once/{id}','HomeController@req');
+
+// 构建上传表单路由
+Route::prefix('form')->group(function(){
+    Route::get('/','PostController@form');
+    Route::post('/submit','PostController@submit');
+});
+
+Route::get('/mylogin',  function(){
+    return view('layouts.login');
+});
 // 兜底路由 也就是TP中的Miss路由 属于最后的防线
 Route::fallback(function () {
     return response()->view('error');

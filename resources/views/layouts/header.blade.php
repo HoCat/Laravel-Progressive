@@ -12,4 +12,4 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-@datetime('2019-12-06 16:02:29')
+

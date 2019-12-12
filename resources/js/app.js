@@ -4,6 +4,8 @@ window.Vue = require("vue");
 
 Vue.component('tasks-component', require('./components/TasksComponent.vue').default);
 Vue.component('cards-component', require('./components/CardsComponent.vue').default);
+Vue.component('fileupload-component', require('./components/FileUploadComponent.vue').default);
+Vue.component('logindialog-component', require('./components/LoginDialogComponent.vue').default);
 
 import VueSocketIO from 'vue-socket.io'
 Vue.use(new VueSocketIO({
